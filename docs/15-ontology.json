@@ -1,0 +1,50 @@
+{
+  "version": "0.1",
+  "entities": [
+    "Issue",
+    "Document",
+    "Evidence",
+    "Decision",
+    "Change",
+    "Test",
+    "Release",
+    "Feedback"
+  ],
+  "document_types": [
+    "foundation",
+    "vision",
+    "prd",
+    "requirement",
+    "research",
+    "experiment",
+    "rfc",
+    "adr",
+    "design",
+    "test",
+    "evidence",
+    "operations",
+    "retrospective",
+    "glossary",
+    "ontology"
+  ],
+  "relations": [
+    "raises",
+    "refines",
+    "resolves",
+    "derives",
+    "proposes",
+    "decides",
+    "implements",
+    "verifies",
+    "supersedes",
+    "depends_on",
+    "generates"
+  ],
+  "source_of_truth": {
+    "Issue": "uncertainty",
+    "accepted Document": "shared knowledge",
+    "ADR": "adopted decision",
+    "Code": "implementation",
+    "Test/Evidence": "verification"
+  }
+}
