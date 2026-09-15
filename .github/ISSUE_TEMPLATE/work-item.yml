@@ -1,0 +1,97 @@
+name: Work Item
+description: Create an Issue, Work, Job, Ticket, Task, or TODO
+title: ""
+labels: []
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: Work Item の種類
+      options:
+        - issue
+        - work
+        - job
+        - ticket
+        - task
+        - todo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      description: Issue / Work / Job の種類
+      options:
+        - problem
+        - question
+        - feature
+        - bug
+        - research
+        - improvement
+        - development
+        - operation
+        - design
+        - marketing
+        - creative
+        - build
+        - analyze
+        - test
+        - deploy
+        - generate
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: 背景・現在の状況
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: 達成したいこと
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: 完了条件
+      placeholder: |
+        - [ ] 条件1
+        - [ ] 条件2
+
+  - type: input
+    id: parent
+    attributes:
+      label: Parent
+      description: 親WorkItem
+      placeholder: "#123"
+
+  - type: textarea
+    id: depends_on
+    attributes:
+      label: Depends On
+      description: 依存するWorkItem
+      placeholder: |
+        #123
+        #456
+
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Deliverable
+      description: 作成されるArtifact
+      placeholder: code / docs / test / dataset / model / release
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - low
+        - medium
+        - high
+        - critical
+      default: 1
