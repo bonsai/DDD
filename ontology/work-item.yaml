@@ -1,0 +1,114 @@
+ontology:
+  id: work-item
+  version: "0.2.0"
+  label: Work Item Ontology
+  description: >
+    共通の仕事モデル。Issue, Work, Job, Ticket, Task, TODO を
+    人間とAgentが同じ語彙で扱う。
+
+classes:
+  WorkItem:
+    abstract: true
+    properties:
+      id: { type: string, required: true }
+      type:
+        type: enum
+        values: [issue, work, job, ticket, task, todo]
+        required: true
+      title: { type: string, required: true }
+      description: { type: string }
+      status:
+        type: enum
+        values: [backlog, ready, in_progress, blocked, review, done, cancelled]
+        default: backlog
+      priority:
+        type: enum
+        values: [low, medium, high, critical]
+        default: medium
+      parent: { type: WorkItemRef }
+      depends_on: { type: WorkItemRef[] }
+      assignee: { type: ActorRef }
+      input: { type: ArtifactRef[] }
+      output: { type: ArtifactRef[] }
+      created_at: { type: datetime }
+      updated_at: { type: datetime }
+
+  Issue:
+    is_a: WorkItem
+    purpose: why
+    description: 解決すべき問題・問い・要求・機能・バグ・研究課題
+    kinds: [problem, question, feature, bug, research, improvement]
+
+  Work:
+    is_a: WorkItem
+    purpose: what
+    description: 人間またはAgentが取り組む仕事・活動
+    kinds: [development, research, operation, design, marketing, creative]
+
+  Job:
+    is_a: WorkItem
+    purpose: execute
+    description: WorkerまたはAgentが実行する処理・役務
+    kinds: [build, analyze, research, test, deploy, generate]
+
+  Ticket:
+    is_a: WorkItem
+    purpose: request
+    description: 実行してほしい仕事として発行された依頼
+
+  Task:
+    is_a: WorkItem
+    purpose: how
+    description: JobまたはTicketを具体的な作業へ分解した単位
+
+  TODO:
+    is_a: WorkItem
+    purpose: next_action
+    description: 実際に着手できる最小の未完了項目
+    properties:
+      completed: { type: boolean, default: false }
+
+  Artifact:
+    abstract: true
+    kinds: [code, document, test, dataset, model, release, deployment]
+
+relations:
+  contains:
+    domain: WorkItem
+    range: WorkItem
+  depends_on:
+    domain: WorkItem
+    range: WorkItem
+  relates_to:
+    domain: WorkItem
+    range: WorkItem
+  requests:
+    domain: WorkItem
+    range: WorkItem
+  executes:
+    domain: WorkItem
+    range: WorkItem
+  verifies:
+    domain: WorkItem
+    range: WorkItem
+  produces:
+    domain: WorkItem
+    range: Artifact
+
+recommended_flow:
+  - Issue
+  - Work
+  - Job
+  - Ticket
+  - Task
+  - TODO
+  - Artifact
+
+semantics:
+  Issue: WHY / WHAT problem or question
+  Work: WHAT activity or body of work
+  Job: EXECUTE what a worker or agent should perform
+  Ticket: REQUEST for execution
+  Task: HOW to perform the work
+  TODO: NEXT concrete action
+  Artifact: RESULT produced by work
