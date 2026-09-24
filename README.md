@@ -7,39 +7,16 @@
 **Document Driven Development (DDD)** is a development method in which humans and AI discover unresolved questions through Issues, stabilize shared knowledge and decisions through Documents, execute them through Code, and generate new Issues through Tests and Feedback.
 
 ```text
-Vision
-  ↓
-Goal
-  ↓
-PRD / Requirement
-  ↓
-Issue（問い）
-  ↓
-Research / Experiment
-  ↓
-Decision
-  ↓
-ADR
-  ↓
-Design
-  ↓
-Task / PR
-  ↓
-Code
-  ↓
-Test
-  ↓
-Release
-  ↓
-Feedback
-  ↓
-Issue
+Vision → Goal → PRD / Requirement → Issue（問い）
+      → Research / Experiment → Decision → ADR
+      → Design → Task / PR → Code → Test → Release
+      → Feedback → Issue
 ```
 
 ## Core principles
 
 1. **Issue is a question.** It represents uncertainty, work, risk, or a requested change.
-2. **Document is stabilized knowledge.** A document records a reusable understanding, requirement, proposal, decision, design, or evidence.
+2. **Document is stabilized knowledge.** A document records reusable understanding, requirements, proposals, decisions, designs, or evidence.
 3. **ADR records decisions.** It answers what was chosen and why, not merely what was implemented.
 4. **Code is executable knowledge.** Implementation should be traceable to requirements and decisions.
 5. **Test is evidence.** A test verifies whether an expected behavior or property is actually satisfied.
@@ -58,6 +35,19 @@ Issue
 - Runbook / Operations / Security
 - Release Notes / Postmortem / Retrospective
 - Ontology / Glossary
+- **KPI / MVP / POC** — complementary product and validation documents
+
+## Core document types
+
+| Type | Purpose | Question |
+|---|---|---|
+| [KPI](docs/kpi.md) | Measure outcomes | Are we achieving the target? |
+| [MVP](docs/mvp.md) | Define the minimum product | What is the smallest product worth delivering? |
+| [POC](docs/poc.md) | Validate a technical approach | Can this approach work? |
+| [PRD](docs/prd.md) | Define the product | What are we building? |
+| [ADR](docs/adr.md) | Record an implementation decision | Why did we choose this approach? |
+
+These document types are complementary: KPI measures outcomes, PRD defines the product, MVP limits the first product scope, POC validates uncertain technical assumptions, and ADR records durable technical decisions.
 
 ## Issue ↔ Document
 
@@ -69,7 +59,7 @@ Issue
 | Several solutions are being compared | RFC |
 | A choice has been made | ADR |
 | Implementation structure is being described | Design |
-| An assumption is being investigated | Research / Experiment |
+| An assumption is being investigated | Research / Experiment / POC |
 | A claim has been verified | Test / Evidence |
 | A change is proposed in code | PR |
 | A released change is communicated | Release Note |
@@ -78,4 +68,4 @@ See `docs/issue-document-flow.md` for the lifecycle and `docs/traceability.md` f
 
 ## Status
 
-This repository is the canonical specification for DDD itself. It is intentionally document-first: the method is defined before tooling is built.
+This repository is the canonical specification for DDD itself. The former `bonsai/docs` document-type definitions are incorporated here so DDD is the single canonical home for document-driven development definitions.

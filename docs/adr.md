@@ -1,61 +1,55 @@
-# ADR Template
+# ADR
 
-> ADR (Architecture Decision Record) records a durable decision and its rationale.
+**Architecture Decision Record** — a short record of an important technical or architectural decision and the reasons behind it.
 
-## Status
+## Purpose
 
-`proposed` / `accepted` / `rejected` / `deprecated` / `superseded`
+ADR answers:
 
-## Context
+> Why did we choose this approach?
 
-What situation, constraint, problem, or Issue required a decision?
-
-## Decision
-
-State the chosen option clearly and unambiguously.
-
-## Alternatives
-
-List the meaningful alternatives considered.
-
-| Option | Advantages | Disadvantages | Reason |
-|---|---|---|---|
-| A | ... | ... | ... |
-| B | ... | ... | ... |
-
-## Rationale
-
-Why was this decision selected? Reference evidence, requirements, experiments, or principles.
-
-## Consequences
-
-### Positive
-
-- ...
-
-### Negative / Trade-offs
-
-- ...
-
-### Follow-up
-
-- ...
-
-## Traceability
+## Structure
 
 ```yaml
-related_issues: []
-derived_from: []
-implements: []
-verified_by: []
-supersedes: null
-superseded_by: null
+id: ADR-001
+title: decision title
+status: proposed | accepted | superseded | rejected | deprecated
+context: context and problem
+options:
+  - option
+decision: chosen decision
+alternatives:
+  - option
+rationale: why the decision was chosen
+consequences:
+  positive:
+    - consequence
+  negative:
+    - consequence
+references:
+  - related document
+traceability:
+  related_issues: []
+  derived_from: []
+  implements: []
+  verified_by: []
+  supersedes: null
+  superseded_by: null
 ```
 
 ## Rules
 
-1. ADR records a **decision**, not a task list.
-2. The decision must be understandable without reading the implementation.
-3. Reversibility should be stated when relevant.
-4. Rejected alternatives should remain visible when they explain the choice.
-5. A changed decision should create a new ADR that supersedes the old one; do not rewrite history to erase the old rationale.
+- Record decisions that are important enough to affect future implementation or maintenance.
+- Explain context and alternatives, not only the final choice.
+- Keep ADR focused on WHY; detailed implementation belongs in design/spec documents.
+- Do not rewrite history when a decision changes; supersede the old ADR with a new one.
+- Rejected alternatives should remain visible when they explain the choice.
+
+## Relationship
+
+```text
+POC / RESEARCH → ADR → DESIGN → BUILD
+                         ↑
+                    implementation
+                     rationale
+```

@@ -1,68 +1,54 @@
-# PRD Template
+# PRD
 
-> PRD defines product intent, value, scope, and verifiable outcomes. It does not prescribe implementation details.
+**Product Requirements Document** — a document that defines what product should be built and the requirements it must satisfy.
 
-## 1. Problem
+## Purpose
 
-What problem exists? For whom? What evidence shows that it matters?
+PRD answers:
 
-## 2. Target
+> What are we building?
 
-Who is the primary user or actor?
-
-## 3. Goal
-
-What measurable or observable outcome should this product create?
-
-## 4. Non-goals
-
-What is explicitly outside this PRD?
-
-## 5. User stories
-
-```text
-As a <user>,
-I want <capability>,
-so that <value>.
-```
-
-## 6. Requirements
-
-Each requirement should be uniquely identifiable and testable.
+## Structure
 
 ```yaml
-- id: REQ-001
-  statement: ...
-  priority: must
-  related_issues: []
+id: PRD-001
+product: product name
+problem: problem to solve
+users:
+  - target user
+value: expected user value
+requirements:
+  - id: REQ-001
+    statement: requirement
+    priority: must
+constraints:
+  - product constraint
+success_criteria:
+  - criterion
+mvp: MVP-001
+kpi:
+  - KPI-001
+open_questions:
+  - issue
+traceability:
+  - related issue / decision / design
 ```
 
-## 7. Acceptance criteria
+## Rules
 
-Define observable conditions for considering the requirement satisfied.
+- Define WHAT, not implementation details.
+- Describe users, problem, value, requirements, constraints, and observable acceptance criteria.
+- Keep technical solution choices in design documents or ADRs.
+- Define boundaries so MVP scope can be derived.
+- Do not silently resolve uncertainty; unresolved questions belong in Issues.
+- Material changes should create or reference an Issue and record what changed and why.
 
-## 8. Constraints
-
-Business, technical, legal, budget, time, compatibility, or operational constraints.
-
-## 9. Dependencies
-
-External systems, decisions, documents, or teams required for delivery.
-
-## 10. Risks
-
-Known risks and their relationship to Issues.
-
-## 11. Open questions
-
-Do not silently resolve uncertainty. Link unresolved questions to Issues.
-
-## 12. Traceability
+## Relationship
 
 ```text
-PRD → Requirement → Issue → Research/RFC → ADR → Design → Change → Test
+VISION → PRD → MVP → DESIGN → BUILD
+             ↓
+       requirements / issues
+             ↓
+       research / ADR
 ```
-
-## 13. Change policy
-
-A PRD may evolve. Material changes should create or reference an Issue and record what changed and why. Implementation details belong in Design/ADR documents rather than being hidden inside the PRD.
